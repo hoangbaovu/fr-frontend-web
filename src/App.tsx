@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Link } from 'react-router-dom';
+import { getToken } from './utils/auth';
+
+declare global {
+  interface Window {
+    methodA: any;
+  }
+}
 
 function App() {
+
+  if (typeof window != "undefined") { // needed if SSR
+    window.methodA = function(a: any) {
+      alert(a);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+      <Link to="/auth/login">Login</Link>
+
+
+      <div className="qrscan-wraper">
+        <a id="qrscanRef" href="http://example.com/camera">
+          <p>Scan QR Code</p>
         </a>
-      </header>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
