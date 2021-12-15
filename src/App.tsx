@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getToken } from './utils/auth';
+// import { getToken } from './utils/auth';
 
 declare global {
   interface Window {
